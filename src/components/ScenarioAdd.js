@@ -1,5 +1,7 @@
 import { MDBBtn } from "mdb-react-ui-kit";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addscenario } from "../redux/ScenarioSlice";
 
 function ScenarioAdd() {
   let homestyle = {
@@ -7,6 +9,12 @@ function ScenarioAdd() {
     fontFamily: "sans-serif",
     margin: "30px 100px",
   };
+  const [scenarioname, setscenarioname] = useState("")
+  const [scenariotime, setscenariotime] = useState("")
+  const dispatch = useDispatch();
+  function handleclick(){
+    dispatch(addscenario({scenarioname, scenariotime}))
+  }
   return (
     <div
       style={{
@@ -30,16 +38,16 @@ function ScenarioAdd() {
       >
         <div style={{display:"flex", flexDirection:"column", margin:"30px 0px",}}>
           <strong style={{color:"white"}}>Scenario Name</strong>
-          <input></input>
+          <input type="text" value={scenarioname} onChange={(e)=>setscenarioname(e.target.value)}></input>
         </div>
         <div style={{display:"flex", flexDirection:"column", margin:"30px 0px"}}>
           <strong style={{color:"white"}}>Scenario Time(seconds)</strong>
-          <input></input>
+          <input type="number" value={scenariotime} onChange={(e) => setscenariotime(e.target.value)}></input>
         </div>
       </div>
       <div style={{ ...homestyle, display: "flex" }}>
         <div style={{ margin: "0px 10px" }}>
-          <MDBBtn color="success">Add</MDBBtn>
+          <MDBBtn color="success" onClick={handleclick}>Add</MDBBtn>
         </div>
         <div style={{ margin: "0px 10px" }}>
           <MDBBtn color="warning">Reset</MDBBtn>

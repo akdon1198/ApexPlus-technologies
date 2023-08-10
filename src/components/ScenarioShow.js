@@ -1,7 +1,9 @@
 import { MDBBtn } from "mdb-react-ui-kit";
 import React from "react";
+import { useSelector } from "react-redux";
 
 function ScenarioShow() {
+  const ScenarioList = useSelector(state => state.scenario.ScenarioList)
   return (
     <div style={{ width: "80%", backgroundColor: "black" }}>
       <div style={{ display: "flex" }}>
@@ -42,55 +44,21 @@ function ScenarioShow() {
         <div style={{ backgroundColor:"rgb(30, 33, 33)", height: "30px", textAlign:"center", color:"white"}}>Add Vehicle</div>
         <div style={{ backgroundColor:"rgb(30, 33, 33)", height: "30px", textAlign:"center", color:"white"}}>Edit</div>
         <div style={{ backgroundColor:"rgb(30, 33, 33)", height: "30px", textAlign:"center", color:"white"}}>Delete</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>Test Scenario</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>2s</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>Test Scenario</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>2s</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>Test Scenario</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>2s</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>Test Scenario</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>2s</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>Test Scenario</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>2s</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>Test Scenario</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>2s</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>Test Scenario</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>2s</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>1</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
-        <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>
+        {
+          ScenarioList && ScenarioList.map((Scenarioitem) => {
+            return(
+              <>
+              <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>{Scenarioitem.scenarioid}</div>
+              <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>{Scenarioitem.scenarioname}</div>
+              <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>{Scenarioitem.scenariotime}</div>
+              <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black"}}>{Scenarioitem.vehicleList.length}</div>
+              <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>➕</div>
+              <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>✏️</div>
+              <div style={{ backgroundColor:"grey", height: "30px", textAlign:"center", color:"black", cursor:"pointer"}}>🗑️</div>      
+              </>
+            )
+          })
+        }
       </div>
     </div>
   );
